@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../environments/environment';
 @Component({
   selector: 'app-root',
   template: `
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get('http://localhost:5000/api/hello').subscribe(
+    this.http.get(`${environment.apiUrl}/api/hello`).subscribe(
       (data: any) => {
         this.message = data.message;
       },
